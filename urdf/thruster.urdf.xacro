@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:macro name="thruster" params="parent name *origin ">
+    <joint name="${name}_base_joint" type="fixed" >
+      <parent link="${parent}" />
+      <child link="${name}_base_link" />
+      <xacro:insert_block name="origin" />
+    </joint>
+
+    <link name="${name}_base_link">
+      <visual>
+        <geometry>
+          <box size="0.1 0.1 0.3"/>
+        </geometry>
+        <material name="black"/>
+      </visual>
+    </link>
+  </xacro:macro>
+</robot>
