@@ -9,7 +9,7 @@
 
   <include file="$(find gazebo_spaceship)/launch/description.launch"/>
 
-  <node name="spawn_gazebo_model" pkg="gazebo_ros" type="spawn_model" args="-urdf -param robot_description -model tie_fighter -z 1.0 " respawn="false" output="screen" />
+  <node name="spawn_gazebo_model" pkg="gazebo_ros" type="spawn_model" args="-urdf -param robot_description -model tie_fighter -z 12.0 " respawn="false" output="screen" />
 
   <!-- <include file="$(find ur_gazebo)/launch/controller_utils.launch"/>
 

@@ -15,5 +15,16 @@
         <material name="black"/>
       </visual>
     </link>
+
+   <!--  <gazebo>
+      <plugin name="${name}_propulsion" filename="libthruster_ros_plugin.so">
+       <linkName>${namespace}/thruster_${thruster_id}</linkName>
+        <jointName>${namespace}/thruster_${thruster_id}_joint</jointName>
+        <thrusterID>${thruster_id}</thrusterID>
+        <xacro:insert_block name="dynamics"/>
+        <xacro:insert_block name="conversion"/>
+      </plugin>
+    </gazebo> -->
+
   </xacro:macro>
 </robot>
