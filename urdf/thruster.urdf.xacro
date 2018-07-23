@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
-  <xacro:macro name="thruster" params="name thruster_id *origin ">
+  <xacro:macro name="thruster" params="name thruster_name *origin ">
 
     <link name="${name}_base_link">
       <visual>
@@ -25,89 +25,10 @@
     </joint>
 
     <gazebo>
-      <!-- Thruster ROS plugin -->
-      <plugin name="${name}_thruster_model" filename="libthruster_ros_plugin.so">
-        <!-- Name of the thruster link -->
+      <plugin name="${name}_thruster_model" filename="libair_thruster_ros_plugin.so">
         <linkName>${name}_base_link</linkName>
-
-        <!-- Name of the joint between thruster and vehicle base link -->
-        <jointName>${name}_joint</jointName>
-
-         <thrusterID>${thruster_id}</thrusterID>
-
-        <!-- Thruster force output topic name -->
-        <thrustTopic>/thrusters/${name}/thrust</thrustTopic>
-
-        <!-- Thruster commmand input topic name -->
+         <thrusterName>${thruster_name}</thrusterName>
         <inputTopic>/thrusters/${name}/input</inputTopic>
-
-        <!-- Gain of the input command signal -->
-        <gain>1</gain>
-
-        <!-- Maximum allowed input value for the input signal for thruster unit -->
-        <clampMax>0</clampMax>
-
-        <!-- Minimum allowed value for the input signal for thruster unit -->
-        <clampMin>0</clampMin>
-
-        <!--
-        Value from 0 to 1 to set the efficiency of the output thrust force
-        Default value is 1.0
-        -->
-        <thrust_efficiency>1</thrust_efficiency>
-
-        <!--
-        Value from 0 to 1 to set the efficiency of the propeller as a factor
-        to be multiplied to the current value of the state variable at each
-        iteration.
-        Default value is 1.0
-        -->
-        <propeller_efficiency>1</propeller_efficiency>
-
-        <!-- Simple zero-order model -->
-        <dynamics>
-          <type>ZeroOrder</type>
-        </dynamics>
-
-        <!-- <dynamics>
-          <type>FirstOrder</type>
-          <timeConstant>0.0</timeConstant>
-        </dynamics>
-
-        <dynamics>
-          <type>Yoerger</type>
-          <alpha>0.0</alpha>
-          <beta>0.0</beta>
-        </dynamics>
-
-        <dynamics>
-          <type>Bessa</type>
-          <Jmsp>0.0</Jmsp>
-          <Kv1>0.0</Kv1>
-          <Kv2>0.0</Kv2>
-          <Kt>0.0</Kt>
-          <Rm>0.0</Rm>
-        </dynamics> -->
-
-        <conversion>
-          <type>Basic</type>
-          <rotorConstant>0.0</rotorConstant>
-        </conversion>
-
-        <!-- <conversion>
-          <type>Bessa</type>
-          <rotorConstantL>0.0</rotorConstantL>
-          <rotorConstantR>0.0</rotorConstantR>
-          <deltaL>0.0</deltaL>
-          <deltaR>0.0</deltaR>
-        </conversion>
-
-        <conversion>
-          <type>LinearInterp</type>
-          <inputValues>0 1 2 3</inputValues>
-          <outputValues>0 1 2 3</outputValues>
-        </conversion> -->
-
       </plugin>
     </gazebo>
 
