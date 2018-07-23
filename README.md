@@ -1,3 +1,3 @@
 # gazebo_spaceship
 
-Waiting for the thruster plugin that I will have to create myself. . . 
+Using my simple air thruster gazebo plugin: https://github.com/gstavrinos/air_thruster_gazebo_plugin
